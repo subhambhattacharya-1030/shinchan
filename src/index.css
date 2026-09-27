@@ -1,0 +1,448 @@
+/* =========================================================================
+   SHIN-CHAN CLAYMORPHISM DESIGN SYSTEM
+   Theme: Playful, tactile, 3D rounded clay aesthetic
+   Strict Rule: Absolutely NO blue and NO purple!
+   Warm, cheerful palette: Shinchan Red, Nohara Yellow, Chocobi Green, Tangerine Orange, Cream
+   ========================================================================= */
+
+:root {
+  /* Strictly No Blue & No Purple! Warm Shinchan Cartoon Palette */
+  --shin-red: #FF3B30;
+  --shin-red-dark: #D92525;
+  --shin-red-light: #FF6B6B;
+  --shin-red-soft: #FFEAE8;
+
+  --shin-yellow: #FFD100;
+  --shin-yellow-dark: #E6A800;
+  --shin-yellow-light: #FFF066;
+  --shin-yellow-soft: #FFF9D6;
+
+  --shin-orange: #FF7A00;
+  --shin-orange-dark: #D95A00;
+  --shin-orange-light: #FFA142;
+  --shin-orange-soft: #FFF0E0;
+
+  --shin-green: #4CAF50;
+  --shin-green-dark: #388E3C;
+  --shin-green-light: #81C784;
+  --shin-green-soft: #E8F5E9;
+
+  --shin-chocobi: #E67E22;
+  --shin-chocobi-dark: #B95709;
+  --shin-biscuit: #D4A373;
+
+  /* Neutrals & Clay Backgrounds */
+  --bg-cream: #FFF8EE;
+  --bg-sand: #FCEFD9;
+  --bg-card: #FFFFFF;
+  --text-main: #2D1E18;      /* Warm espresso dark */
+  --text-muted: #6B4E3D;     /* Warm earth brown */
+  --text-light: #9C7A68;
+
+  /* Claymorphism Shadow Profiles */
+  --clay-shadow-card:
+    0 20px 40px rgba(140, 75, 30, 0.10),
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.95),
+    inset -6px -6px 14px rgba(160, 90, 45, 0.12);
+
+  --clay-shadow-inset:
+    inset 4px 4px 8px rgba(140, 75, 30, 0.14),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.95);
+
+  --clay-shadow-button-red:
+    0 12px 24px rgba(217, 37, 37, 0.35),
+    0 4px 8px rgba(0, 0, 0, 0.06),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.7),
+    inset -4px -4px 8px rgba(140, 15, 15, 0.35);
+
+  --clay-shadow-button-yellow:
+    0 12px 24px rgba(230, 168, 0, 0.36),
+    0 4px 8px rgba(0, 0, 0, 0.06),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.9),
+    inset -4px -4px 8px rgba(180, 120, 0, 0.3);
+
+  --clay-shadow-button-green:
+    0 12px 24px rgba(56, 142, 60, 0.32),
+    0 4px 8px rgba(0, 0, 0, 0.06),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.7),
+    inset -4px -4px 8px rgba(25, 80, 30, 0.32);
+
+  --clay-shadow-button-orange:
+    0 12px 24px rgba(217, 90, 0, 0.34),
+    0 4px 8px rgba(0, 0, 0, 0.06),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.75),
+    inset -4px -4px 8px rgba(150, 50, 0, 0.3);
+
+  --clay-shadow-pill:
+    0 8px 18px rgba(140, 75, 30, 0.09),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.9),
+    inset -3px -3px 6px rgba(160, 90, 45, 0.1);
+
+  /* Fonts */
+  --font-heading: 'Fredoka', 'Outfit', cursive, sans-serif;
+  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Global Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-cream);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 209, 0, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 70%, rgba(255, 59, 48, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(76, 175, 80, 0.05) 0%, transparent 50%),
+    radial-gradient(rgba(220, 160, 100, 0.12) 1.5px, transparent 1.5px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-heading);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  user-select: none;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* =========================================================================
+   CLAYMORPHISM CORE CLASSES
+   ========================================================================= */
+
+/* Clay Card */
+.clay-card {
+  background: var(--bg-card);
+  border-radius: 32px;
+  box-shadow: var(--clay-shadow-card);
+  border: 3.5px solid rgba(255, 255, 255, 0.9);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.clay-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 26px 48px rgba(140, 75, 30, 0.14),
+    0 10px 20px rgba(0, 0, 0, 0.05),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.95),
+    inset -6px -6px 14px rgba(160, 90, 45, 0.1);
+}
+
+/* Colored Clay Card Variants */
+.clay-card-yellow {
+  background: linear-gradient(145deg, #FFFDF0, #FFF6CF);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 20px 40px rgba(220, 160, 0, 0.14),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.95),
+    inset -6px -6px 14px rgba(200, 140, 0, 0.14);
+}
+
+.clay-card-red {
+  background: linear-gradient(145deg, #FFF5F4, #FFEBE9);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 20px 40px rgba(220, 40, 30, 0.12),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.95),
+    inset -6px -6px 14px rgba(180, 40, 40, 0.12);
+}
+
+.clay-card-green {
+  background: linear-gradient(145deg, #F2FAF3, #E4F7E6);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 20px 40px rgba(60, 150, 70, 0.12),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.95),
+    inset -6px -6px 14px rgba(40, 120, 50, 0.12);
+}
+
+.clay-card-orange {
+  background: linear-gradient(145deg, #FFF6ED, #FFE9D6);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 20px 40px rgba(220, 110, 20, 0.13),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.95),
+    inset -6px -6px 14px rgba(170, 80, 20, 0.13);
+}
+
+/* Clay Inset Wells / Recesses */
+.clay-inset {
+  background: rgba(230, 215, 195, 0.35);
+  border-radius: 20px;
+  box-shadow: var(--clay-shadow-inset);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Clay Pill Badges */
+.clay-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: var(--clay-shadow-pill);
+  border: 2.5px solid rgba(255, 255, 255, 0.9);
+  transition: transform 0.2s ease;
+}
+
+.clay-pill-red {
+  background: #FFE8E6;
+  color: var(--shin-red-dark);
+}
+
+.clay-pill-yellow {
+  background: #FFF7CE;
+  color: #9E6B00;
+}
+
+.clay-pill-green {
+  background: #E4F7E6;
+  color: var(--shin-green-dark);
+}
+
+.clay-pill-orange {
+  background: #FFEBD6;
+  color: var(--shin-orange-dark);
+}
+
+/* Clay Interactive Buttons */
+.clay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+}
+
+.clay-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.clay-btn:active {
+  transform: translateY(2px) scale(0.96);
+}
+
+/* Button Colors */
+.clay-btn-red {
+  background: linear-gradient(145deg, #FF5547, #E52E2E);
+  color: #FFFFFF;
+  box-shadow: var(--clay-shadow-button-red);
+}
+
+.clay-btn-red:hover {
+  box-shadow:
+    0 16px 30px rgba(217, 37, 37, 0.45),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.8),
+    inset -4px -4px 8px rgba(140, 15, 15, 0.4);
+}
+
+.clay-btn-yellow {
+  background: linear-gradient(145deg, #FFDE43, #FFBA08);
+  color: #3B2600;
+  box-shadow: var(--clay-shadow-button-yellow);
+}
+
+.clay-btn-yellow:hover {
+  box-shadow:
+    0 16px 30px rgba(230, 168, 0, 0.45),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.95),
+    inset -4px -4px 8px rgba(180, 120, 0, 0.35);
+}
+
+.clay-btn-green {
+  background: linear-gradient(145deg, #5DBB63, #388E3C);
+  color: #FFFFFF;
+  box-shadow: var(--clay-shadow-button-green);
+}
+
+.clay-btn-green:hover {
+  box-shadow:
+    0 16px 30px rgba(56, 142, 60, 0.42),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.8),
+    inset -4px -4px 8px rgba(25, 80, 30, 0.38);
+}
+
+.clay-btn-orange {
+  background: linear-gradient(145deg, #FFA048, #FF6F00);
+  color: #FFFFFF;
+  box-shadow: var(--clay-shadow-button-orange);
+}
+
+.clay-btn-orange:hover {
+  box-shadow:
+    0 16px 30px rgba(217, 90, 0, 0.42),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.85),
+    inset -4px -4px 8px rgba(150, 50, 0, 0.38);
+}
+
+.clay-btn-white {
+  background: #FFFFFF;
+  color: var(--text-main);
+  box-shadow:
+    0 10px 22px rgba(140, 75, 30, 0.12),
+    inset 3px 3px 6px rgba(255, 255, 255, 1),
+    inset -3px -3px 6px rgba(160, 90, 45, 0.14);
+}
+
+.clay-btn-white:hover {
+  box-shadow:
+    0 15px 28px rgba(140, 75, 30, 0.16),
+    inset 3px 3px 6px rgba(255, 255, 255, 1),
+    inset -3px -3px 6px rgba(160, 90, 45, 0.12);
+}
+
+/* Clay Circle Button (Icons/Audio) */
+.clay-btn-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* =========================================================================
+   ANIMATIONS & KEYFRAMES
+   ========================================================================= */
+
+@keyframes buriBuriWiggle {
+  0% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-8deg) scale(1.04) translateX(-4px); }
+  40% { transform: rotate(8deg) scale(0.98) translateX(4px); }
+  60% { transform: rotate(-7deg) scale(1.03) translateX(-3px); }
+  80% { transform: rotate(6deg) scale(0.99) translateX(3px); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(10px) rotate(-2deg); }
+}
+
+@keyframes squishBounce {
+  0%, 100% { transform: scale(1, 1); }
+  30% { transform: scale(1.08, 0.92); }
+  60% { transform: scale(0.95, 1.05); }
+  80% { transform: scale(1.02, 0.98); }
+}
+
+@keyframes actionBeamPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 209, 0, 0.5), 0 0 30px rgba(255, 59, 48, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 209, 0, 0.9), 0 0 50px rgba(255, 59, 48, 0.6);
+  }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.anim-buri {
+  animation: buriBuriWiggle 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.anim-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.anim-float-rev {
+  animation: floatReverse 4.5s ease-in-out infinite;
+}
+
+.anim-squish {
+  animation: squishBounce 2.5s ease-in-out infinite;
+}
+
+.anim-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+/* =========================================================================
+   CONTAINER & UTILITY
+   ========================================================================= */
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-padding {
+  padding: 90px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+  .container {
+    padding: 0 16px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-sand);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--shin-yellow-dark);
+  border-radius: 8px;
+  border: 3px solid var(--bg-sand);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--shin-red);
+}
